@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Hero from '../entities/Hero'
+import Hero from "../entities/Hero";
 
 class Game extends Phaser.Scene {
   constructor() {
@@ -14,25 +14,16 @@ class Game extends Phaser.Scene {
   }
 
   create(data) {
-
-    this.input.keyboard.on('keydown-SPACE',() => {
-      console.log('pressed space')
-    })
-
-    this.space = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)    
-    this.space.on('up',() => {
-      console.log('Release Space')
-    })
-
+    this.cursorKeys = this.input.keyboard.createCursorKeys();
 
     this.anims.create({
-      key: 'hero-running',
-      frames: this.anims.generateFrameNumbers('hero-run-sheet'),
-      frameRate: 15, 
-      repeat: -1
-    })
+      key: "hero-running",
+      frames: this.anims.generateFrameNumbers("hero-run-sheet"),
+      frameRate: 15,
+      repeat: -1,
+    });
 
-    this.hero = new Hero (this, 250, 160)
+    this.hero = new Hero(this, 250, 160);
   }
 
   update(time, delta) {}
